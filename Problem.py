@@ -4,6 +4,9 @@ import Node
 class Problem:
     def __init__(self, initialState):
         self.initialState = initialState
+        self.goalState = [[1, 2, 3],
+                          [4, 5, 6],
+                          [7, 8, 0]]
 
     def findZero(self, state):
         I0 = -1
@@ -16,9 +19,7 @@ class Problem:
         return [I0, J0]
 
     def goalTest(self, state):
-        if state == [[1, 2, 3],
-                     [4, 5, 6],
-                     [7, 8, 0]]:
+        if state == self.goalState:
             return True
 
         return False

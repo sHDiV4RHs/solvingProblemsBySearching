@@ -2,7 +2,8 @@ import Problem
 import DFS
 import BFS
 import DLS
-
+import IDDFS
+import Bidirectional
 
 def printSolution(solution):
     counter = 0
@@ -26,7 +27,7 @@ def printStatistics(algo, actions, solution):
     print("goalDepth: {}".format(len(actions)))
 
 
-# p = Problem([[4, 1, 2],
+# p = Problem.Problem([[4, 1, 2],
 #              [5, 3, 0],
 #              [6, 7, 8]])
 
@@ -41,19 +42,40 @@ if result:
     actions, solution = result
     printStatistics(bfs, actions, solution)
 
-print("\n\nDFS")
-dfs = DFS.DFS()
-result = dfs.run(p)
+# print("\n\nDFS")
+# dfs = DFS.DFS()
+# result = dfs.run(p)
+# if result:
+#     actions, solution = result
+#     printStatistics(dfs, actions, solution)
+#
+# print("\n\nDLS")
+# dls = DLS.DLS()
+# result = dls.run(p, 4)
+# if result not in ['cutoff', 'failure']:
+#     actions, solution = result
+#     printStatistics(dls, actions, solution)
+# else:
+#     print(result)
+
+# print("\n\nIDDFS")
+# iddfs = IDDFS.IDDFS()
+# result = iddfs.run(p)
+# if result != 'failure':
+#     actions, solution = result
+#     printStatistics(iddfs, actions, solution)
+# else:
+#     print(result)
+
+print("\n\nBidirectional")
+bid = Bidirectional.Bidirectional()
+result = bid.run(p)
 if result:
     actions, solution = result
-    printStatistics(dfs, actions, solution)
-
-print("\n\nDLS")
-dls = DLS.DLS()
-result = dls.run(p, 4)
-if result not in ['cutoff', 'failure']:
-    actions, solution = result
-    printStatistics(dls, actions, solution)
+    printStatistics(bid, actions, solution)
 else:
     print(result)
+
+
+
 
