@@ -9,6 +9,24 @@ class Node:
         for l in self.state:
             print(l)
 
+    def __gt__(self, other):
+        if self.pathCost > other.pathCost:
+            return True
+        else:
+            return False
+
+    def __lt__(self, other):
+        if self.pathCost < other.pathCost:
+            return True
+        else:
+            return False
+
+    # def __eq__(self, other):
+    #     if self.pathCost == other.pathCost:
+    #         return True
+    #     else:
+    #         return False
+
 
 class DLSNode(Node):
     def __init__(self, state, pathCost, parent, lastAction):

@@ -4,6 +4,8 @@ import BFS
 import DLS
 import IDDFS
 import Bidirectional
+import UCS
+
 
 def printSolution(solution):
     counter = 0
@@ -31,9 +33,13 @@ def printStatistics(algo, actions, solution):
 #              [5, 3, 0],
 #              [6, 7, 8]])
 
-p = Problem.Problem([[1, 2, 3],
-                     [7, 4, 6],
-                     [0, 5, 8]])
+# p = Problem.Problem([[1, 2, 3],
+#                      [7, 4, 6],
+#                      [0, 5, 8]])
+
+p = Problem.Problem([[1, 5, 2],
+                     [4, 0, 3],
+                     [7, 8, 6]])
 
 print("\n\nBFS")
 bfs = BFS.BFS()
@@ -67,15 +73,18 @@ if result:
 # else:
 #     print(result)
 
-print("\n\nBidirectional")
-bid = Bidirectional.Bidirectional()
-result = bid.run(p)
+# print("\n\nBidirectional")
+# bid = Bidirectional.Bidirectional()
+# result = bid.run(p)
+# if result:
+#     actions, solution = result
+#     printStatistics(bid, actions, solution)
+# else:
+#     print(result)
+
+print("\n\nUCS")
+ucs = UCS.UCS()
+result = ucs.run(p)
 if result:
     actions, solution = result
-    printStatistics(bid, actions, solution)
-else:
-    print(result)
-
-
-
-
+    printStatistics(ucs, actions, solution)
