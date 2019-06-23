@@ -5,6 +5,7 @@ import DLS
 import IDDFS
 import Bidirectional
 import UCS
+import AStar
 
 
 def printSolution(solution):
@@ -33,13 +34,13 @@ def printStatistics(algo, actions, solution):
 #              [5, 3, 0],
 #              [6, 7, 8]])
 
-# p = Problem.Problem([[1, 2, 3],
-#                      [7, 4, 6],
-#                      [0, 5, 8]])
+p = Problem.Problem([[1, 2, 3],
+                     [7, 4, 6],
+                     [0, 5, 8]])
 
-p = Problem.Problem([[1, 5, 2],
-                     [4, 0, 3],
-                     [7, 8, 6]])
+# p = Problem.Problem([[1, 5, 2],
+#                      [4, 0, 3],
+#                      [7, 8, 6]])
 
 print("\n\nBFS")
 bfs = BFS.BFS()
@@ -48,39 +49,39 @@ if result:
     actions, solution = result
     printStatistics(bfs, actions, solution)
 
-# print("\n\nDFS")
-# dfs = DFS.DFS()
-# result = dfs.run(p)
-# if result:
-#     actions, solution = result
-#     printStatistics(dfs, actions, solution)
-#
-# print("\n\nDLS")
-# dls = DLS.DLS()
-# result = dls.run(p, 4)
-# if result not in ['cutoff', 'failure']:
-#     actions, solution = result
-#     printStatistics(dls, actions, solution)
-# else:
-#     print(result)
+print("\n\nDFS")
+dfs = DFS.DFS()
+result = dfs.run(p)
+if result:
+    actions, solution = result
+    printStatistics(dfs, actions, solution)
 
-# print("\n\nIDDFS")
-# iddfs = IDDFS.IDDFS()
-# result = iddfs.run(p)
-# if result != 'failure':
-#     actions, solution = result
-#     printStatistics(iddfs, actions, solution)
-# else:
-#     print(result)
+print("\n\nDLS")
+dls = DLS.DLS()
+result = dls.run(p, 4)
+if result not in ['cutoff', 'failure']:
+    actions, solution = result
+    printStatistics(dls, actions, solution)
+else:
+    print(result)
 
-# print("\n\nBidirectional")
-# bid = Bidirectional.Bidirectional()
-# result = bid.run(p)
-# if result:
-#     actions, solution = result
-#     printStatistics(bid, actions, solution)
-# else:
-#     print(result)
+print("\n\nIDDFS")
+iddfs = IDDFS.IDDFS()
+result = iddfs.run(p)
+if result != 'failure':
+    actions, solution = result
+    printStatistics(iddfs, actions, solution)
+else:
+    print(result)
+
+print("\n\nBidirectional")
+bid = Bidirectional.Bidirectional()
+result = bid.run(p)
+if result:
+    actions, solution = result
+    printStatistics(bid, actions, solution)
+else:
+    print(result)
 
 print("\n\nUCS")
 ucs = UCS.UCS()
@@ -88,3 +89,10 @@ result = ucs.run(p)
 if result:
     actions, solution = result
     printStatistics(ucs, actions, solution)
+
+print("\n\nAStar")
+aStar = AStar.AStar()
+result = aStar.run(p)
+if result:
+    actions, solution = result
+    printStatistics(aStar, actions, solution)

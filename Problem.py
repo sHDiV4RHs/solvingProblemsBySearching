@@ -40,10 +40,7 @@ class Problem:
             actions.append('u')
         return actions
 
-    def getChild(self, node, action):
-        # print("\nin getChild:")
-        # print("\nnode.printNode()")
-        # node.printNode()
+    def getChild(self, node, action, heuristic='off'):
         IJ0 = self.findZero(node.state)
         I0 = IJ0[0]
         J0 = IJ0[1]
@@ -65,8 +62,9 @@ class Problem:
         elif action == 'd':
             newState[I0][J0] = newState[I0 + 1][J0]
             newState[I0 + 1][J0] = 0
-
-        child = Node.Node(newState, 0, node, action)
-        # print("\nchild in getChild")
-        # child.printNode()
+        if heuristic == 'off':
+            child = Node.Node(newState, node.pathCost+1, node, action)
+        elif heuristic == 'on':
+            child = Node.AStarNode(newState, node.pathCost + 1, node, action)
         return child
+
