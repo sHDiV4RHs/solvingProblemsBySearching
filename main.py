@@ -30,17 +30,18 @@ def printStatistics(algo, actions, solution):
     print("goalDepth: {}".format(len(actions)))
 
 
-# p = Problem.Problem([[4, 1, 2],
-#              [5, 3, 0],
-#              [6, 7, 8]])
-
 p = Problem.Problem([[1, 2, 3],
                      [7, 4, 6],
                      [0, 5, 8]])
 
-# p = Problem.Problem([[1, 5, 2],
-#                      [4, 0, 3],
-#                      [7, 8, 6]])
+# p = Problem.Problem([[4, 1, 2],  # NOT for DFS family
+#                      [5, 3, 0],
+#                      [6, 7, 8]])
+
+
+# p = Problem.Problem([[1, 5, 2],  # Not for DFS
+#                      [7, 4, 3],
+#                      [0, 8, 6]])
 
 print("\n\nBFS")
 bfs = BFS.BFS()
@@ -58,7 +59,7 @@ if result:
 
 print("\n\nDLS")
 dls = DLS.DLS()
-result = dls.run(p, 4)
+result = dls.run(p, 6)
 if result not in ['cutoff', 'failure']:
     actions, solution = result
     printStatistics(dls, actions, solution)
